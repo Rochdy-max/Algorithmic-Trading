@@ -23,7 +23,7 @@ if __name__ == '__main__':
         sys.exit(0)
     # Data feeds
     data = bt.feeds.PandasData(dataname=df)
-    cerebro.adddata(data) 
+    cerebro.adddata(data)
 
     # Add strategy to Cerebro
     cerebro.addstrategy(MyStrategy)

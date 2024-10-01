@@ -3,15 +3,22 @@ from datetime import datetime
 
 class MyStrategy(bt.Strategy):
     def __init__(self):
-        pass
+        self.dataclose = self.datas[0].close
+        # Another feed ?
+        # self.otherclose = self.datas[1].close
 
     def log(self, msg):
         dt = datetime.now()
         print('{} | {}'.format(dt, msg))
 
     def next(self):
-        current_bar = self.datas[0]
-        self.log('-' * 50)
-        self.log(f'Datetime: {current_bar.datetime.datetime()}')
-        self.log(f'Close size: {len(current_bar.close)}')
-        self.log(f'Current close value: {current_bar.close[0]}')
+        self.log('=' * 50)
+        self.log(f'Datetime: {self.datas[0].datetime.date()}')
+        self.log(f'Close size: {len(self.datas[0].close)}')
+        self.log(f'Current close value: {self.dataclose[0]}')
+
+        # Another feed ?
+        # self.log('-' * 50)
+        # self.log(f'Datetime: {self.datas[1].datetime.date()}')
+        # self.log(f'Close size: {len(self.datas[1].close)}')
+        # self.log(f'Current close value: {self.otherclose[0]}')

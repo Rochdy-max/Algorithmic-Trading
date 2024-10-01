@@ -4,6 +4,7 @@ from datetime import datetime
 class MyStrategy(bt.Strategy):
     def __init__(self):
         self.dataclose = self.datas[0].close
+        self.x = 1
         # Another feed ?
         # self.otherclose = self.datas[1].close
 
@@ -15,7 +16,10 @@ class MyStrategy(bt.Strategy):
         self.log('=' * 50)
         self.log(f'Datetime: {self.datas[0].datetime.date()}')
         self.log(f'Close size: {len(self.datas[0].close)}')
+        self.log(f'Previous/Last close value: {self.dataclose[-1]}')
         self.log(f'Current close value: {self.dataclose[0]}')
+        self.log(f'x: {self.x}')
+        self.x += 1
 
         # Another feed ?
         # self.log('-' * 50)

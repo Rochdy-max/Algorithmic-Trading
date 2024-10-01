@@ -15,7 +15,8 @@ class MyStrategy(bt.Strategy):
     def next(self):
         self.log('=' * 50)
         self.log(f'Datetime: {self.datas[0].datetime.date()}')
-        self.log(f'Close size: {len(self.datas[0].close)}')
+        self.log(f'len(self): {len(self)}')
+        self.log(f'Close size: {len(self.dataclose)}')
         self.log(f'Previous/Last close value: {self.dataclose[-1]}')
         self.log(f'Current close value: {self.dataclose[0]}')
         self.log(f'x: {self.x}')

@@ -1,7 +1,7 @@
 import sys
 import backtrader as bt
 import yfinance as yf
-from MyStrategy import MyStrategy
+from strategies import *
 
 if __name__ == '__main__':
     # Instantiate Cerebro engine
@@ -30,6 +30,9 @@ if __name__ == '__main__':
         dataname=df.loc[in_sample_fromdate:in_sample_todate],
     )
     cerebro.adddata(in_sample_data)
+
+    # Set default position size
+    cerebro.addsizer(bt.sizers.SizerFix, stake=3)
 
     # Add strategy to Cerebro
     cerebro.addstrategy(MyStrategy)

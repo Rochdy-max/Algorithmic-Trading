@@ -38,7 +38,7 @@ if __name__ == '__main__':
     cerebro.addstrategy(MACrossover)
 
     # Get starting portfolio value
-    # cerebro.broker.setcash(500000)
+    cerebro.broker.setcash(500000)
     start_portfolio_value = cerebro.broker.getvalue()
 
     # Run Cerebro Engine

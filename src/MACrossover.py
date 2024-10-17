@@ -2,9 +2,8 @@ import backtrader as bt
 
 class MACrossover(bt.Strategy):
     params = (
-        ('pin_market', 10),
-        ('pfast', 50),
-        ('pslow', 100),
+        ('pfast', 2),
+        ('pslow', 10),
     )
 
     def __init__(self):
@@ -76,10 +75,10 @@ class MACrossover(bt.Strategy):
                 # Keep track of the created order to avoid a 2nd order
                 self.order = self.buy()
             # Otherwise if the fast SMA is below the slow SMA -> SELL
-            elif self.fast_sma[0] < self.slow_sma[0] and self.fast_sma[-1] >= self.slow_sma[-1]:
-                self.log(f'SELL CREATED, {self.dataclose[0]:2f}')
-                # Keep track of the created order to avoid a 2nd order
-                self.order = self.sell()
+            # elif self.fast_sma[0] < self.slow_sma[0] and self.fast_sma[-1] >= self.slow_sma[-1]:
+            #     self.log(f'SELL CREATED, {self.dataclose[0]:2f}')
+            #     # Keep track of the created order to avoid a 2nd order
+            #     self.order = self.sell()
         else:
             # We are already in the market, look for a signal to CLOSE trades
             # if len(self) >= (self.bar_executed + 5):

@@ -35,21 +35,22 @@ if __name__ == '__main__':
     cerebro.addsizer(bt.sizers.SizerFix, stake=3)
 
     # Add strategy to Cerebro
-    cerebro.addstrategy(MyStrategy)
+    cerebro.addstrategy(MACrossover)
 
     # Get starting portfolio value
+    # cerebro.broker.setcash(500000)
     start_portfolio_value = cerebro.broker.getvalue()
 
     # Run Cerebro Engine
     cerebro.run()
-
     # Get end portfolio value
     end_portfolio_value = cerebro.broker.getvalue()
 
     # Profit and Loss
     pnl = end_portfolio_value - start_portfolio_value
 
-    # Log key info
+    # Log PnL info
     print(f'Starting Portfolio Value: {start_portfolio_value:2f}')
     print(f'Final Portfolio Value: {end_portfolio_value:2f}')
     print(f'PnL: {pnl:.2f}')
+    cerebro.plot()
